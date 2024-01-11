@@ -4,6 +4,15 @@ export default {
 			en: "Full Calendar",
 		},
 	},
+	triggerEvents: [
+		{
+			name: "eventClick",
+			label: {
+				en: "User clicked on an event"
+			},
+			event: {}
+		},
+	],
 	properties: {
 		url: {
 			label: {

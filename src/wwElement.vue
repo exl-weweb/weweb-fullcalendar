@@ -20,6 +20,8 @@ export default {
 		content: {type: Object, required: true},
 	},
 
+	emits: ["trigger-event"],
+
 	computed: {
 		endpoint() {
 			return this.content.url;
@@ -70,6 +72,10 @@ export default {
 				},
 				eventClick: (info) => {
 					console.log("eventClick", info);
+					this.$emit("trigger-event", {
+						name: "eventClick",
+						event: info.event
+					});
 				},
 				dateClick: (info) => {
 					console.log("dateClick", info);
