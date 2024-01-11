@@ -71,10 +71,20 @@ export default {
 					});
 				},
 				eventClick: (info) => {
-					console.log("eventClick", info);
+					console.log("eventClick", {
+						id: info.event.id,
+						title: info.event.title,
+						start: info.event.start,
+						end: info.event.end
+					});
 					this.$emit("trigger-event", {
 						name: "eventClick",
-						event: info.event
+						event: {
+							id: info.event.id,
+							title: info.event.title,
+							start: info.event.start,
+							end: info.event.end
+						}
 					});
 				},
 				dateClick: (info) => {

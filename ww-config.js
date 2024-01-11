@@ -10,7 +10,12 @@ export default {
 			label: {
 				en: "User clicked on an event"
 			},
-			event: {}
+			event: {
+				id: 0,
+				title: '',
+				start: 0,
+				end: 0
+			}
 		},
 	],
 	properties: {
