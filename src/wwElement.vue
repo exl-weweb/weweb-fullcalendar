@@ -35,6 +35,12 @@ export default {
 		locale() {
 			return this.content.locale;
 		},
+		fixedWeekCount() {
+			return this.content.fixedWeekCount;
+		},
+		showWeekNumbers() {
+			return this.content.showWeekNumbers;
+		},
 		stylePrimaryColor() {
 			return this.content.stylePrimaryColor;
 		},
@@ -71,25 +77,34 @@ export default {
 					});
 				},
 				eventClick: (info) => {
-					console.log("eventClick", {
+					const emitEvent = {
 						id: info.event.id,
 						title: info.event.title,
 						start: info.event.start,
-						end: info.event.end
-					});
+						end: info.event.end,
+						start_epoch: info.event.start.valueOf(),
+						end_epoch: info.event.end.valueOf()
+					};
+					console.log("eventClick", emitEvent);
 					this.$emit("trigger-event", {
 						name: "eventClick",
-						event: {
-							id: info.event.id,
-							title: info.event.title,
-							start: info.event.start,
-							end: info.event.end
-						}
+						event: emitEvent
 					});
 				},
 				dateClick: (info) => {
-					console.log("dateClick", info);
+					const emitDate = {
+						all_day: info.allDay,
+						date: info.date,
+						date_epoch: info.date.valueOf()
+					};
+					console.log("dateClick", emitDate);
+					this.$emit("trigger-event", {
+						name: "dateClick",
+						date: emitDate
+					});
 				},
+				fixedWeekCount: this.fixedWeekCount,
+				weekNumbers: this.showWeekNumbers,
 			},
 		};
 	},
@@ -113,6 +128,10 @@ export default {
 				} else {
 					this.calendarOptions.locale = nlLocale; // Default Dutch
 				}
+
+				this.calendarOptions.fixedWeekCount = this.fixedWeekCount;
+				this.calendarOptions.weekNumbers = this.showWeekNumbers;
+
 				if (this.stylePrimaryColor !== '') {
 					this.setPrimaryColor();
 				}

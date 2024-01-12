@@ -13,10 +13,23 @@ export default {
 			event: {
 				id: 0,
 				title: '',
-				start: 0,
-				end: 0
-			}
+				start: '',
+				end: '',
+				start_epoch: 0,
+				end_epoch: 0,
+			},
 		},
+		{
+			name: "dateClick",
+			label: {
+				en: "User clicked on an date"
+			},
+			event: {
+				all_day: true,
+				date: '',
+				date_epoch: 0,
+			},
+		}
 	],
 	properties: {
 		url: {
@@ -49,6 +62,22 @@ export default {
 			},
 			type: "String",
 			defaultValue: "nl",
+			bindable: true,
+		},
+		fixedWeekCount: {
+			label: {
+				en: "Fixed week count?",
+			},
+			type: "OnOff",
+			defaultValue: false,
+			bindable: true,
+		},
+		showWeekNumbers: {
+			label: {
+				en: "Show week numbers?",
+			},
+			type: "OnOff",
+			defaultValue: false,
 			bindable: true,
 		},
 		stylePrimaryColor: {
