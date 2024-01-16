@@ -22,7 +22,7 @@ export default {
 		{
 			name: "dateClick",
 			label: {
-				en: "User clicked on an date"
+				en: "User clicked on a date"
 			},
 			event: {
 				all_day: true,
@@ -54,6 +54,14 @@ export default {
 			},
 			type: "String",
 			defaultValue: "",
+			bindable: true,
+		},
+		calendarEvents: {
+			label: {
+				en: "Events",
+			},
+			type: "Array",
+			defaultValue: [],
 			bindable: true,
 		},
 		locale: {

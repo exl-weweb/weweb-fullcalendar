@@ -47,6 +47,13 @@ export default {
 		stylePrimaryActiveColor() {
 			return this.content.stylePrimaryActiveColor;
 		},
+		calendarEvents() {
+			if (this.content.calendarEvents === undefined) {
+				return [];
+			} else {
+				return this.content.calendarEvents;
+			}
+		}
 	},
 
 	data() {
@@ -62,19 +69,23 @@ export default {
 				},
 				locale: nlLocale,
 				events: (fetchInfo, successCallback, failureCallback) => {
-					let headers = {
-						Authorization: `Bearer ${this.bearer}`
+					if (!this.endpoint) {
+						successCallback(this.calendarEvents);
+					} else {
+						let headers = {
+							Authorization: `Bearer ${this.bearer}`
+						}
+						if (this.datasource !== '') {
+							headers['X-Data-Source'] = this.datasource
+						}
+						axios.get(this.endpoint, {
+							headers: headers
+						}).then(response => {
+							successCallback(response.data);
+						}).catch(error => {
+							failureCallback(error);
+						});
 					}
-					if (this.datasource !== '') {
-						headers['X-Data-Source'] = this.datasource
-					}
-					axios.get(this.endpoint, {
-						headers: headers
-					}).then(response => {
-						successCallback(response.data);
-					}).catch(error => {
-						failureCallback(error);
-					});
 				},
 				eventClick: (info) => {
 					const emitEvent = {
