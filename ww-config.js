@@ -6,6 +6,17 @@ export default {
 	},
 	triggerEvents: [
 		{
+			name: "dateClick",
+			label: {
+				en: "User clicked on a date"
+			},
+			event: {
+				all_day: true,
+				date: '',
+				date_epoch: 0,
+			},
+		},
+		{
 			name: "eventClick",
 			label: {
 				en: "User clicked on an event"
@@ -17,17 +28,6 @@ export default {
 				end: '',
 				start_epoch: 0,
 				end_epoch: 0,
-			},
-		},
-		{
-			name: "dateClick",
-			label: {
-				en: "User clicked on a date"
-			},
-			event: {
-				all_day: true,
-				date: '',
-				date_epoch: 0,
 			},
 		}
 	],

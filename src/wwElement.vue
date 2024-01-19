@@ -87,6 +87,18 @@ export default {
 						});
 					}
 				},
+				dateClick: (info) => {
+					const emitDate = {
+						all_day: info.allDay,
+						date: info.date,
+						date_epoch: info.date ? info.date.valueOf() : undefined,
+					};
+					console.log("dateClick", emitDate);
+					this.$emit("trigger-event", {
+						name: "dateClick",
+						date: emitDate
+					});
+				},
 				eventClick: (info) => {
 					const emitEvent = {
 						id: info.event.id,
@@ -100,18 +112,6 @@ export default {
 					this.$emit("trigger-event", {
 						name: "eventClick",
 						event: emitEvent
-					});
-				},
-				dateClick: (info) => {
-					const emitDate = {
-						all_day: info.allDay,
-						date: info.date,
-						date_epoch: info.date ? info.date.valueOf() : undefined,
-					};
-					console.log("dateClick", emitDate);
-					this.$emit("trigger-event", {
-						name: "dateClick",
-						date: emitDate
 					});
 				},
 				fixedWeekCount: this.fixedWeekCount,
