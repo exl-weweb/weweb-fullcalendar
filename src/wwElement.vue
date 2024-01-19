@@ -93,8 +93,8 @@ export default {
 						title: info.event.title,
 						start: info.event.start,
 						end: info.event.end,
-						start_epoch: info.event.start.valueOf(),
-						end_epoch: info.event.end.valueOf()
+						start_epoch: info.event.start ? info.event.start.valueOf() : undefined,
+						end_epoch: info.event.end ? info.event.end.valueOf() : undefined,
 					};
 					console.log("eventClick", emitEvent);
 					this.$emit("trigger-event", {
@@ -106,7 +106,7 @@ export default {
 					const emitDate = {
 						all_day: info.allDay,
 						date: info.date,
-						date_epoch: info.date.valueOf()
+						date_epoch: info.date ? info.date.valueOf() : undefined,
 					};
 					console.log("dateClick", emitDate);
 					this.$emit("trigger-event", {
