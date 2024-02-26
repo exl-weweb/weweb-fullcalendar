@@ -160,7 +160,6 @@ export default {
 <style scoped>
 .fc .fc-button-primary {
     background-color: var(--fc-button-bg-color, default_color);
-	// --fc-button-bg-color: red;
 }
 .fc .fc-button-primary:not(:disabled).fc-button-active {
 	background-color: var(--fc-button-active-bg-color, default_color);
